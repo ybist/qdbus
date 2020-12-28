@@ -90,8 +90,8 @@ def get_bus_detail(departure_station,stop_station,rid,segment_id,station_id):
                 #if (k != '末班车') and (k != '站点顺序'):
                     #print(k,v,' ',end='')
                     #bus_info += k + ' ' + v + ' '
-            #bus_info += k1 + ' ' + v1 + ' ' + k2 + ' ' + v2 + ' ' +k3 + ' ' + v3 + ' ' +k4 + ' ' + v4 + ' ' + k5 + ' ' + v5 + ' '
-            #bus_info += '\n'
+            #bus_details += k1 + ' ' + v1 + ' ' + k2 + ' ' + v2 + ' ' +k3 + ' ' + v3 + ' ' +k4 + ' ' + v4 + ' ' + k5 + ' ' + v5 + ' '
+            #bus_details += '\n'
             bus_details += rid + '路 ' + v1 + ' ' + v3 + '到达' + ' ' + v2 + ' ' + k5 + ' ' + v5 + ' ' 
             bus_details += '\n'
             #print()
@@ -104,7 +104,7 @@ def get_bus_detail(departure_station,stop_station,rid,segment_id,station_id):
 def Synology_Chat(bus_details):
     #curl -X POST  --data-urlencode 'payload={"text": "This is a test"}'  "http://192.168.10.254:5000/webapi/entry.cgi?api=SYNO.Chat.External&method=incoming&version=2&token=%22a%22"
     chat_url = "http://192.168.10.254:5000/webapi/entry.cgi?api=SYNO.Chat.External&method=incoming&version=2&token=%22a%22"
-    payload = 'payload={"text": "' + bus_info + '"}'
+    payload = 'payload={"text": "' + bus_details + '"}'
     payload = payload.encode("utf-8").decode("latin1")
     r = requests.post(chat_url, payload).text
 
